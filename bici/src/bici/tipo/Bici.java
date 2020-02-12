@@ -115,5 +115,8 @@ public abstract class Bici {
 	public String toString() {
 		return getClass().getSimpleName();
 	}
+	
+	
+
 
 }

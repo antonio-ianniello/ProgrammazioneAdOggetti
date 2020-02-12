@@ -14,7 +14,7 @@ import bici.sim.Zona;
 public class Gialla extends Bici {
 	
 	static final private Image IMMAGINE_BICI_GIALLA = leggiImmagineBici(java.awt.Color.YELLOW);
-	static private int progID;
+	static private int progID=0;
 	final private List<Coordinate> destinazioniGialle=GeneratoreCasuale.generaNposizioniCasuali(CostantiSimulazione.NUMERO_BICI_PER_TIPOLOGIA);
 	private Random random;
 	

@@ -14,7 +14,7 @@ import bici.sim.Zona;
  */
 public class Bianca extends Bici{
 	static final private Image IMMAGINE_BICI_BIANCA = leggiImmagineBici(java.awt.Color.WHITE);
-	static private int progID;
+	static private int progID=0;
 	
 	//costruttore
 	public Bianca(Zona zona) {

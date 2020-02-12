@@ -58,15 +58,16 @@ public class Percorso {
 	// SUGG.: VEDI DOMANDA 3
 	@Override
 	public int hashCode() {
-		return this.getOrigine().hashCode()+this.getDestinazione().hashCode();
+		return this.getOrigine().hashCode()+this.getDestinazione().hashCode()+this.getPassoIniziale()+this.getBici().hashCode();
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		final Percorso that = (Percorso)o;
-		return this.getOrigine().equals(that.getOrigine()) && this.getDestinazione().equals(that.getDestinazione());
+		return this.getOrigine().equals(that.getOrigine()) && this.getDestinazione().equals(that.getDestinazione()) &&
+				this.getBici().equals(that.getBici()) && this.getPassoIniziale() == that.getPassoIniziale();
+		
 	}
-	
 	@Override
 	public String toString() {
 		return this.getOrigine()+"->"+this.getDestinazione();
