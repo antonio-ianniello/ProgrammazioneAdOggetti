@@ -2,6 +2,7 @@ package car.stats;
 
 import java.util.*;
 
+import car.auto.Auto;
 import car.auto.Bianca;
 import car.sim.Coordinate;
 import car.sim.Tragitto;
@@ -18,7 +19,7 @@ public class Statistiche {
 
 		// (VEDI DOMANDA 3)
 		System.out.println("Percorsi di ciascuna vettura:");
-		final Map<Bianca,Set<Tragitto>> auto2tragitti = tragittoPerAuto(tragitti);
+		final Map<Auto,Set<Tragitto>> auto2tragitti = tragittoPerAuto(tragitti);
 		stampaTragittiPerAuto(auto2tragitti);
 		System.out.println();
 
@@ -35,17 +36,36 @@ public class Statistiche {
 	 * @return una mappa che riporti per ogni auto (di qls tipo)
 	 *         l'insieme dei tragitti che ha percorso
 	 */
-	public Map<Bianca, Set<Tragitto>> tragittoPerAuto(List<Tragitto> tragitti) {
+	public Map<Auto, Set<Tragitto>> tragittoPerAuto(List<Tragitto> tragitti) {
 		// DA COMPLETARE (VEDI DOMANDA 3)
-		return Collections.emptyMap();
+		 Map<Auto, Set<Tragitto>> tragittoPerAuto = new HashMap<Auto, Set<Tragitto>>();
+		 
+		 
+		 for(Tragitto t : tragitti) {
+			 
+			 Auto a=t.getAuto();
+			 if(tragittoPerAuto.containsKey(a)) {
+				 tragittoPerAuto.get(a).add(t);
+			 }
+			 else {
+				 Set<Tragitto>insieme = new HashSet<Tragitto>();
+				 insieme.add(t);
+				 tragittoPerAuto.put(a,insieme);
+			 }
+			 
+		 }
+		 
+		 
+		 
+		 return tragittoPerAuto;
 	}
 
 	/**
 	 * <EM>N.B. UTILE PER STAMPARE RISULTATI DOMANDA 3</EM>
 	 * @param auto2tragitti
 	 */
-	private void stampaTragittiPerAuto(final Map<Bianca, Set<Tragitto>> auto2tragitti) {
-		for(Bianca auto : auto2tragitti.keySet()) {
+	private void stampaTragittiPerAuto(final Map<Auto, Set<Tragitto>> auto2tragitti) {
+		for(Auto auto : auto2tragitti.keySet()) {
 			Set<Tragitto> tragitti = auto2tragitti.get(auto);
 			System.out.println("L'auto "+auto+" ha fatto "+( tragitti!=null ? tragitti.size() : 0 ) +" corse");
 		}
