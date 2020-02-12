@@ -1,6 +1,7 @@
 package bici.sim;
 
 import bici.tipo.Bianca;
+import bici.tipo.Bici;
 
 /**
  * Modella un percorso da un'origine ad una destinazione,
@@ -10,7 +11,7 @@ import bici.tipo.Bianca;
 public class Percorso {
 
 	/* DA CAMBIARE: VEDI DOMANDA 2 */
-	private Bianca bici;
+	private Bici bici;
 	
 	private Coordinate origine;
 
@@ -20,13 +21,13 @@ public class Percorso {
 	
 	private int passoFinale;   // passo della simulazione in cui il percorso e' stato completato
 	
-	public Percorso(Bianca bici, Coordinate origine, Coordinate destinazione) {
+	public Percorso(Bici bici, Coordinate origine, Coordinate destinazione) {
 		this.bici = bici;
 		this.origine = origine;
 		this.destinazione = destinazione;
 	}
 
-	public Bianca getBici() {
+	public Bici getBici() {
 		return this.bici;
 	}
 

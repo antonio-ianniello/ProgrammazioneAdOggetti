@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import bici.sim.Coordinate;
 import bici.sim.Simulatore;
 import bici.sim.Zona;
-import bici.tipo.Bianca;
+import bici.tipo.Bici;
 
 public class GUI extends JPanel implements CostantiGUI {
 
@@ -92,13 +92,13 @@ public class GUI extends JPanel implements CostantiGUI {
 		this.disegnaOstacoli(g,zona.getOstacoli());
 		g.setColor(YELLOW); // per stampare id
 
-		for (Bianca bici : this.simulatore.getBiciclette()) {
+		for (Bici bici : this.simulatore.getBiciclette()) {
 			disegnaBicicletta(g, bici);
 		}
 		
 	}
 
-	private void disegnaBicicletta(Graphics g, Bianca bici) {
+	private void disegnaBicicletta(Graphics g, Bici bici) {
         final Coordinate posizione = bici.getPosizione();
 		final String ids = bici.toString();
 		disegnaTesto(g, posizione, ids);

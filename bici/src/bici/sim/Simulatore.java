@@ -13,12 +13,13 @@ import javax.swing.SwingUtilities;
 import bici.gui.GUI;
 import bici.stats.Statistiche;
 import bici.tipo.Bianca;
+import bici.tipo.Bici;
 
 public class Simulatore {
 
 	final private Zona zona;
 
-	final private List<Bianca> bici;
+	final private List<Bici> bici;
 
 	private int passo;
 
@@ -46,7 +47,7 @@ public class Simulatore {
 	}
 
 
-	public List<Bianca> getBiciclette() {
+	public List<Bici> getBiciclette() {
 		return this.bici;
 	}
 
@@ -99,7 +100,7 @@ public class Simulatore {
 	private void eseguiPassoDellaSimulazione() {
 		Collections.shuffle(this.bici);
 		/* DA CAMBIARE ( VEDI DOMANDA 2 )*/
-		for(Bianca bici : this.bici) {
+		for(Bici bici : this.bici) {
 			bici.simula(this.getPasso());
 		}
 	}
