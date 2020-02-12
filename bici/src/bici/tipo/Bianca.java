@@ -32,11 +32,7 @@ public class Bianca extends Bici{
 		return IMMAGINE_BICI_BIANCA;
 	}
 
-	@Override
-	public String toString() {
-		return getClass().getSimpleName();
-	}
-
+	
 	
 
 }

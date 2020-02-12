@@ -14,6 +14,7 @@ import bici.gui.GUI;
 import bici.stats.Statistiche;
 import bici.tipo.Bianca;
 import bici.tipo.Bici;
+import bici.tipo.Gialla;
 
 public class Simulatore {
 
@@ -39,6 +40,8 @@ public class Simulatore {
 		/* DA AGGIORNARE (VEDI DOMANDA 2) */
 		for(int i=0; i<NUMERO_BICI_PER_TIPOLOGIA; i++) {
 			this.bici.add(creaBianca());
+			this.bici.add(creaGialla());
+
 		}
 	}
 	
@@ -47,6 +50,11 @@ public class Simulatore {
 	}
 
 
+	public Gialla creaGialla() {
+		return new Gialla(this.getZona());
+	}
+
+	
 	public List<Bici> getBiciclette() {
 		return this.bici;
 	}
