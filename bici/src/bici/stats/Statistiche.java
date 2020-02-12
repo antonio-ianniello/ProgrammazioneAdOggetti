@@ -77,51 +77,62 @@ public class Statistiche {
 	 *         le posizioni piu' battute come origine o destinazione di un 
 	 *         percorso, come valori il numero di tali percorsi
 	 */
+
 	public SortedMap<Coordinate,Integer> utilizzi(Map<Bici, List<Percorso>> bici2percorsi) {
+	
 		
-		Map<Coordinate,Integer> utilizzi = new HashMap<Coordinate, Integer>();
 		
-		for(List<Percorso> percorsi: bici2percorsi.values()) {
-			for(Percorso p:percorsi) {
+		Map<Coordinate,Integer> utilizzi= new HashMap<Coordinate, Integer>();
+		
+		for(List<Percorso> percorsi : bici2percorsi.values()) {
+			
+			for(Percorso p: percorsi) {
 				conta(utilizzi, p.getOrigine());
 				conta(utilizzi,p.getDestinazione());
 			}
-		}
+			
+			
+		}				
 		
-		
-		
-		class ComparatoreCoordinate implements Comparator<Coordinate>{
+		class ComparatoreCoordinate implements Comparator<Coordinate> {
 
 			@Override
-			public int compare(Coordinate o1, Coordinate o2) {
-				int ris = utilizzi.get(o2)-utilizzi.get(o1);
-				if(ris==0)
+			public int compare(Coordinate c1, Coordinate c2) {
+			
+				int output = utilizzi.get(c2)-utilizzi.get(c1);
+				if(output==0)
 					return -1;
 				
-				return ris;
-			} 
-			
-		}
+				return output;
+			}
+
 		
-		SortedMap<Coordinate,Integer> risultato = new TreeMap<Coordinate,Integer>(new ComparatoreCoordinate());
+		}		
+		
+		SortedMap<Coordinate,Integer> risultato= new TreeMap<>(new ComparatoreCoordinate());
+		
 		risultato.putAll(utilizzi);
-		return risultato;
 		
+		return risultato;
+			
 	}
 
 	@SuppressWarnings("deprecation")
-	private void conta(Map<Coordinate, Integer> utilizzi, Coordinate c) {
+	private void conta(Map<Coordinate, Integer> utilizzi,Coordinate c) {
 		
 		if(utilizzi.containsKey(c)) {
-			Integer valore =utilizzi.get(c)+1;
-			utilizzi.put(c, valore);
+			Integer nuovo = utilizzi.get(c)+1;
+			utilizzi.put(c, nuovo);
+			
 		}
+		
 		else {
-			utilizzi.put(c,new Integer(1));
+			utilizzi.put(c, new Integer(1));
 		}
 	}
-	
-	/**
+		
+		
+			/**
 	 * <EM>N.B. UTILE PER STAMPARE RISULTATI DOMANDA 4</EM>
 	 * @param classifica delle posizioni piu' usate
 	 */

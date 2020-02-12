@@ -1,8 +1,10 @@
 package bici.stats;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -87,6 +89,20 @@ public class StatisticheTest {
 		//bici bianca segue il percorso p1
 		assertEquals(p1,percorsiPerBici.get(b).get(0));
 		
+	}
+	
+	
+	@Test
+	public void testPercorsoPerBiciVuotov() {
+		assertTrue(this.stats.percorsiPerBici(Collections.emptySet()).isEmpty());
+	}
+	
+	@Test
+	public void testPercorsoPerBiciNonVuoto() {
+		Zona zona = new Zona();
+		Bici gialla = new Gialla(zona);
+		Percorso single = new Percorso(gialla ,new Coordinate(0,0), new Coordinate(1,1));
+		assertFalse(this.stats.percorsiPerBici(Collections.singleton(single)).isEmpty());
 	}
 
 }
