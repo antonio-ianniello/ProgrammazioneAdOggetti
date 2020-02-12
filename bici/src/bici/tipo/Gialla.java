@@ -43,8 +43,8 @@ public class Gialla extends Bici {
 	//deve scegliere solo in un elenco ristretto
 	@Override
 	protected Coordinate decidiProssimaDestinazione() {
-		int indice = this.random.nextInt(this.getDestinazioniGialle().size());
-		return this.getDestinazioniGialle().get(indice);
+		random = new Random();
+		return this.getDestinazioniGialle().get(random.nextInt(Gialla.destinazioniGialle.size()));
 	}
 
 	@Override

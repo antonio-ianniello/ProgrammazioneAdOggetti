@@ -111,9 +111,10 @@ public abstract class Bici {
 	
 	public abstract Image getImmagine() ;
 	
+	//aggiunto get id per distinguere anche il numero progressivo
 	@Override
 	public String toString() {
-		return getClass().getSimpleName();
+		return getClass().getSimpleName()+this.getId();
 	}
 	
 	

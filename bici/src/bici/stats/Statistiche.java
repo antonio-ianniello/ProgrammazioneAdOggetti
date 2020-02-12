@@ -5,7 +5,6 @@ import java.util.*;
 import bici.sim.Coordinate;
 import bici.sim.Percorso;
 import bici.sim.Zona;
-import bici.tipo.Bianca;
 import bici.tipo.Bici;
 
 public class Statistiche {
@@ -78,9 +77,43 @@ public class Statistiche {
 	 *         le posizioni piu' battute come origine o destinazione di un 
 	 *         percorso, come valori il numero di tali percorsi
 	 */
+	@SuppressWarnings("deprecation")
 	public SortedMap<Coordinate,Integer> utilizzi(Map<Bici, List<Percorso>> bici2percorsi) {
-		// DA COMPLETARE (VEDI DOMANDA 4)
-		return Collections.emptySortedMap();
+		
+		Map<Coordinate,Integer> utilizzi = new HashMap<Coordinate, Integer>();
+		
+		for(List<Percorso> percorsi: bici2percorsi.values()) {
+			for(Percorso p:percorsi) {
+				Coordinate c = p.getOrigine();
+				if(utilizzi.containsKey(c)) {
+					Integer valore =utilizzi.get(c)+1;
+					utilizzi.put(c, valore);
+				}
+				else {
+					utilizzi.put(c,new Integer(1));
+				}
+			}
+		}
+		
+		
+		
+		class ComparatoreCoordinate implements Comparator<Coordinate>{
+
+			@Override
+			public int compare(Coordinate o1, Coordinate o2) {
+				int ris = utilizzi.get(o2)-utilizzi.get(o1);
+				if(ris==0)
+					return -1;
+				
+				return ris;
+			} 
+			
+		}
+		
+		SortedMap<Coordinate,Integer> risultato = new TreeMap<Coordinate,Integer>(new ComparatoreCoordinate());
+		risultato.putAll(utilizzi);
+		return risultato;
+		
 	}
 	
 	/**
