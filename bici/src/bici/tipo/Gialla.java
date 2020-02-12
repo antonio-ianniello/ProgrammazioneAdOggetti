@@ -15,7 +15,7 @@ public class Gialla extends Bici {
 	
 	static final private Image IMMAGINE_BICI_GIALLA = leggiImmagineBici(java.awt.Color.YELLOW);
 	static private int progID=0;
-	final private List<Coordinate> destinazioniGialle=GeneratoreCasuale.generaNposizioniCasuali(CostantiSimulazione.NUMERO_BICI_PER_TIPOLOGIA);
+	static private List<Coordinate> destinazioniGialle=GeneratoreCasuale.generaNposizioniCasuali(CostantiSimulazione.NUMERO_BICI_PER_TIPOLOGIA);
 	private Random random;
 	
 	
@@ -29,12 +29,22 @@ public class Gialla extends Bici {
 	public List<Coordinate> getDestinazioniGialle() {
 		return destinazioniGialle;
 	}
+	
+	
+	
+
+	public static void setDestinazioniGialle(List<Coordinate> destinazioniGialle) {
+		Gialla.destinazioniGialle = destinazioniGialle;
+	}
+
+
+
 
 	//deve scegliere solo in un elenco ristretto
 	@Override
 	protected Coordinate decidiProssimaDestinazione() {
-		random = new Random();
-		return this.getDestinazioniGialle().get(this.random.nextInt(this.getDestinazioniGialle().size()));
+		int indice = this.random.nextInt(this.getDestinazioniGialle().size());
+		return this.getDestinazioniGialle().get(indice);
 	}
 
 	@Override

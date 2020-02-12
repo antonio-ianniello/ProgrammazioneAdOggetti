@@ -1,5 +1,6 @@
 package bici.stats;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -41,10 +42,10 @@ public class StatisticheTest {
 	}
 	
 	@Test
-	public void testPercorsoPerBici() {
+	public void testPercorsoPerBiciStessoPercorsoBiciDiversa() {
 		// DA COMPLETARE ( VEDI DOMANDA 3 )
-		Bianca b= new Bianca(new Zona());
-		Gialla g= new Gialla(new Zona());
+		Bici b= new Bianca(new Zona());
+		Bici g= new Gialla(new Zona());
 		
 		Coordinate origine = new Coordinate(0, 0);
 		Coordinate destinazione = new Coordinate(3, 0);
@@ -61,6 +62,31 @@ public class StatisticheTest {
 		
 		//abbiamo due bici diverse con percorso uguale
 		assertTrue(percorsiPerBici.size()==2);
+		
+	}
+	
+	
+	@Test
+	public void testPercorsoPerBiciUnTipo() {
+		// DA COMPLETARE ( VEDI DOMANDA 3 )
+		Bici b= new Bianca(new Zona());
+	
+		
+		Coordinate origine = new Coordinate(0, 0);
+		Coordinate destinazione = new Coordinate(3, 0);
+
+		Percorso p1 = new Percorso(b, origine, destinazione);
+		
+		
+		percorsi.add(p1);
+	
+
+		
+		
+		Map<Bici, List<Percorso>> percorsiPerBici = this.stats.percorsiPerBici(percorsi);
+		
+		//bici bianca segue il percorso p1
+		assertEquals(p1,percorsiPerBici.get(b).get(0));
 		
 	}
 
