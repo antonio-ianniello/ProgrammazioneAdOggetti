@@ -17,6 +17,7 @@ import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import car.auto.Auto;
 import car.auto.Bianca;
 import car.sim.Coordinate;
 import car.sim.Simulatore;
@@ -73,13 +74,13 @@ public class GUI extends JPanel implements CostantiGUI {
 		this.disegnaOstacoli(g,ambiente.getOstacoli());
 		g.setColor(YELLOW); // per stampare id
 
-		for (Bianca vettura : this.simulatore.getVetture()) {
+		for (Auto vettura : this.simulatore.getVetture()) {
 			disegnaVettura(g, vettura);
 		}
 		
 	}
 
-	private void disegnaVettura(Graphics g, Bianca auto) {
+	private void disegnaVettura(Graphics g, Auto auto) {
         final Coordinate posizione = auto.getPosizione();
 		final String ids = auto.toString();
 		disegnaTesto(g, posizione, ids);

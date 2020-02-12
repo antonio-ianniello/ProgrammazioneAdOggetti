@@ -24,7 +24,7 @@ public class Bianca extends Auto{
 	
 	public Bianca(Zona zona) {
 		super(zona, progId++);
-		// TODO Auto-generated constructor stub
+	
 	}
 
 

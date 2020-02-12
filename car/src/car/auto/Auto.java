@@ -114,7 +114,6 @@ public abstract class Auto {
 		final Auto that = (Auto)o;
 		return Objects.equals(this.getId(), that.getId()) && this.getClass().getSimpleName().equals(that.getClass().getSimpleName());
 	}
-
 	
 	@Override
 	public String toString() {

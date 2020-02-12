@@ -10,7 +10,9 @@ import java.util.List;
 
 import javax.swing.SwingUtilities;
 
+import car.auto.Auto;
 import car.auto.Bianca;
+import car.auto.Gialla;
 import car.gui.GUI;
 import car.stats.Statistiche;
 
@@ -18,7 +20,7 @@ public class Simulatore {
 
 	final private Zona zona;
 
-	final private List<Bianca> vetture;
+	final private List<Auto> vetture;
 
 	private int passo;
 
@@ -35,15 +37,20 @@ public class Simulatore {
 		/* DA AGGIORNARE (VEDI DOMANDA 2) */
 		for(int i=0; i<NUMERO_AUTO_PER_TIPOLOGIA; i++) {
 			this.vetture.add(creaBianca());
+			this.vetture.add(creaGialla());
 		}
 	}
 	
 	public Bianca creaBianca() {
 		return new Bianca(this.getZona());
 	}
+	
+	public Gialla creaGialla() {
+		return new Gialla(this.getZona());
+	}
 
 
-	public List<Bianca> getVetture() {
+	public List<Auto> getVetture() {
 		return this.vetture;
 	}
 
@@ -80,7 +87,7 @@ public class Simulatore {
 	private void eseguiPassoDellaSimulazione() {
 		Collections.shuffle(this.vetture);
 		/* DA CAMBIARE ( VEDI DOMANDA 2 )*/
-		for(Bianca vettura : this.vetture) {
+		for(Auto vettura : this.vetture) {
 			vettura.simula(this.getPasso());
 		}
 	}

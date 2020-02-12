@@ -34,7 +34,9 @@ public class AutoTest {
 	@Test
 	public void testIdProgressiviPerGialle() {
 		// DA COMPLETARE VEDI DOMANDA 2
-		fail("DA COMPLETARE");
+		assertEquals("Gli id sono progressivi base 0 per ciascun tipo dinamico!", 0, new Gialla(this.zona).getId());
+		assertEquals("Gli id sono progressivi base 0 per ciascun tipo dinamico!", 1, new Gialla(this.zona).getId());
+		
 	}
 
 }
