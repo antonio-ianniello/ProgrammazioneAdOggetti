@@ -36,13 +36,15 @@ public class Coordinate {
 	@Override
 	public int hashCode() {
 		/* (DA COMPLETARE VEDI DOMANDA 1) */
-		return 0;
+		return this.getX()+this.getY();
 	}
 
 	@Override
 	public boolean equals(Object o){
 		/* (DA COMPLETARE VEDI DOMANDA 1) */
-		return false;
+		Coordinate that =(Coordinate)o;
+		
+		return this.getX()==that.getX() && this.getY()==that.getY(); 
 	}
 
 	@Override
