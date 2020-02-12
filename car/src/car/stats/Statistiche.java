@@ -80,7 +80,49 @@ public class Statistiche {
 	 */
 	public SortedMap<Coordinate,Integer> utilizzi(List<Tragitto> tragitti) {
 		// DA COMPLETARE (VEDI DOMANDA 4)
-		return Collections.emptySortedMap();
+		Map<Coordinate,Integer> utili = new HashMap<Coordinate, Integer>();
+		
+		for(Tragitto t:tragitti) {
+			conta(utili, t.getOrigine());
+			conta(utili,t.getDestinazione());
+		}
+		
+		
+		class ComparatoreCoordinate implements Comparator<Coordinate> {
+
+			@Override
+			public int compare(Coordinate c1, Coordinate c2) {
+				
+				int output= utili.get(c2)-utili.get(c1);
+				
+				if(output==0)
+					return -1;
+				
+				return output;
+			}
+			
+		}
+		
+		
+		SortedMap<Coordinate,Integer> utilizzi = new TreeMap<>(new ComparatoreCoordinate());
+		
+		utilizzi.putAll(utili);
+		
+		return utilizzi;
+	}
+
+	@SuppressWarnings("deprecation")
+	private void conta(Map<Coordinate, Integer> utili, Coordinate c) {
+		
+		
+		if(utili.containsKey(c)) {
+			Integer valore = utili.get(c)+1;
+			utili.put(c, valore);
+			
+		}
+		else {
+			utili.put(c, new Integer(1));
+		}
 	}
 	
 	/**
