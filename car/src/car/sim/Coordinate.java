@@ -1,5 +1,7 @@
 package car.sim;
 
+import car.auto.Auto;
+
 /**
  * Rappresenta le coordinate di  una posizione modellata come coppia di interi 
  * ascissa (x) ed ordinata (y), all'interno di un piano cartesiano.

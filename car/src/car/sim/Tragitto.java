@@ -1,5 +1,6 @@
 package car.sim;
 
+import car.auto.Auto;
 import car.auto.Bianca;
 
 /**
@@ -10,19 +11,19 @@ import car.auto.Bianca;
 public class Tragitto {
 
 	/* DA CAMBIARE VEDI DOMANDA 2 */
-	private Bianca auto;
+	private Auto auto;
 	
 	private Coordinate origine;
 
 	private Coordinate destinazione;
 	
-	public Tragitto(Bianca auto, Coordinate origine, Coordinate destinazione) {
-		this.auto = auto;
+	public Tragitto(Auto auto2, Coordinate origine, Coordinate destinazione) {
+		this.auto = auto2;
 		this.origine = origine;
 		this.destinazione = destinazione;
 	}
 
-	public Bianca getAuto() {
+	public Auto getAuto() {
 		return this.auto;
 	}
 
