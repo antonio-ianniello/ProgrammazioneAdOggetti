@@ -77,21 +77,14 @@ public class Statistiche {
 	 *         le posizioni piu' battute come origine o destinazione di un 
 	 *         percorso, come valori il numero di tali percorsi
 	 */
-	@SuppressWarnings("deprecation")
 	public SortedMap<Coordinate,Integer> utilizzi(Map<Bici, List<Percorso>> bici2percorsi) {
 		
 		Map<Coordinate,Integer> utilizzi = new HashMap<Coordinate, Integer>();
 		
 		for(List<Percorso> percorsi: bici2percorsi.values()) {
 			for(Percorso p:percorsi) {
-				Coordinate c = p.getOrigine();
-				if(utilizzi.containsKey(c)) {
-					Integer valore =utilizzi.get(c)+1;
-					utilizzi.put(c, valore);
-				}
-				else {
-					utilizzi.put(c,new Integer(1));
-				}
+				conta(utilizzi, p.getOrigine());
+				conta(utilizzi,p.getDestinazione());
 			}
 		}
 		
@@ -114,6 +107,18 @@ public class Statistiche {
 		risultato.putAll(utilizzi);
 		return risultato;
 		
+	}
+
+	@SuppressWarnings("deprecation")
+	private void conta(Map<Coordinate, Integer> utilizzi, Coordinate c) {
+		
+		if(utilizzi.containsKey(c)) {
+			Integer valore =utilizzi.get(c)+1;
+			utilizzi.put(c, valore);
+		}
+		else {
+			utilizzi.put(c,new Integer(1));
+		}
 	}
 	
 	/**
