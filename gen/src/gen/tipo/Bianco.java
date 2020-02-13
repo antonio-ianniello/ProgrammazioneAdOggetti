@@ -27,7 +27,7 @@ public class Bianco extends Animale{
 	
 	
 	public Bianco(Ambiente ambiente) {
-		super(ambiente, progId);
+		super(ambiente, progId++);
 		// TODO Auto-generated constructor stub
 	}
 
