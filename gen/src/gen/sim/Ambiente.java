@@ -85,28 +85,7 @@ public class Ambiente {
 	public List<Animale> getAllAnimali() {
 		return this.animali;
 	}
-	
-	public List<Animale> getAllStessaSpecie(Class<?> classe) {
-		List<Animale>bianchi = new ArrayList<Animale>();
-		for(Animale a:this.getAllAnimali()) {
-			if(a.getClass().equals(classe))
-				bianchi.add(a);
-		}
-		
-		return bianchi;
-	}
-	
-	
-	public List<Animale> getAllSpecieDiversa(Class<?> classe) {
-		List<Animale>specieDiversa = new ArrayList<Animale>();
-		for(Animale a:this.getAllAnimali()) {
-			if(!a.getClass().equals(classe))
-				specieDiversa.add(a);
-		}
-		
-		return specieDiversa;
-	}
-	
+
 	
 
 	

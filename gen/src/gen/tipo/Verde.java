@@ -35,13 +35,13 @@ public class Verde extends Animale{
 		
 		//PRIMA DELL' ETA SONO COME I GIALLI
 		if(this.getEta()<CostantiSimulazione.MIN_ETA_RIPRODUZIONE) {
-			all = this.getAmbiente().getAllSpecieDiversa(Verde.class);
+			all = this.getAllSpecieDiversa(Verde.class);
 			
 		}
 		
 		//senno' come bianchi
 		else {
-			all = this.getAmbiente().getAllStessaSpecie(Verde.class);
+			all = this.getAllStessaSpecie(Verde.class);
 			
 		}
 		return all.get(generaNumeroSinoA(all.size()));

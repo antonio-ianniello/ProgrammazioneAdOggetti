@@ -29,7 +29,7 @@ public class Giallo extends Animale{
 
 	@Override
 	protected Animale decidiProssimoObiettivo() {
-		List<Animale> all = this.getAmbiente().getAllSpecieDiversa(Giallo.class);
+		List<Animale> all = this.getAllSpecieDiversa(Giallo.class);
 		return all.get(generaNumeroSinoA(all.size()));
 	}
 

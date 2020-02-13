@@ -42,7 +42,7 @@ public class Bianco extends Animale{
 	protected Animale decidiProssimoObiettivo() {
 		/* scegli un obiettivo casualmente */
 		// Sugg.: al momento sono tutti della stessa specie, ma dopo DOMANDA 2bcd e' ancora vero? */
-		List<Animale> all = this.getAmbiente().getAllStessaSpecie(Bianco.class);
+		List<Animale> all = this.getAllStessaSpecie(Bianco.class);
 		return all.get(generaNumeroSinoA(all.size()));
 	}
 	
