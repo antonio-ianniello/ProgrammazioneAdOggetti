@@ -52,5 +52,10 @@ public class Verde extends Animale{
 		
 		return IMMAGINE_VERDE;
 	}
+	
+	@Override
+	public String toString() {
+		return Verde.class.getSimpleName()+getId() + ":"+getGenere().name().charAt(0)+" "+getEta();
+	}
 
 }

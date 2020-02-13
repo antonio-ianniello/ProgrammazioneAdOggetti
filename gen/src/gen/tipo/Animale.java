@@ -1,10 +1,10 @@
 package gen.tipo;
 
-import static gen.sim.GeneratoreCasuale.generaNumeroSinoA;
+
 import static gen.sim.GeneratoreCasuale.posizioneCasuale;
 
 import java.awt.Image;
-import java.util.List;
+
 import java.util.Set;
 
 import gen.sim.Ambiente;
@@ -114,6 +114,18 @@ public abstract class Animale {
 	public int getId() {
 		return this.id;
 	}
+	
+	@Override
+	public int hashCode() {
+		return this.getClass().getSimpleName().hashCode()+this.getId();
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Animale that=(Animale) o;
+		return this.getClass().getSimpleName().equals(that.getClass().getSimpleName()) && this.getId()==that.getId();
+	}
+	
 
 	
 	

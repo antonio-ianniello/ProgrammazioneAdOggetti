@@ -37,5 +37,10 @@ public class Giallo extends Animale{
 	public Image getImmagine() {
 		return IMMAGINE_GIALLA;
 	}
+	
+	@Override
+	public String toString() {
+		return Giallo.class.getSimpleName()+getId() + ":"+getGenere().name().charAt(0)+" "+getEta();
+	}
 
 }

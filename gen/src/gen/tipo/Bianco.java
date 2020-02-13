@@ -50,6 +50,11 @@ public class Bianco extends Animale{
 	public Image getImmagine() {
 		return IMMAGINE_BIANCA;
 	}
+
+@Override
+public String toString() {
+	return Bianco.class.getSimpleName()+getId() + ":"+getGenere().name().charAt(0)+" "+getEta();
+}
 	
 
 	
