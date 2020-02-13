@@ -9,36 +9,37 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Set;
 
+import gen.tipo.Animale;
 import gen.tipo.Bianco;
 
 public class Scontro {
 
-	private Set<Bianco> animali;
+	private Set<Animale> animali;
 	
-	private Bianco vincente;
+	private Animale  vincente;
 
 	final static int ETA_OTTIMALE_PER_GLI_SCONTRI = ( MAX_ETA_RIPRODUZIONE - MIN_ETA_RIPRODUZIONE ) / 2;
 	
-	public Scontro(Set<Bianco> animali) {
+	public Scontro(Set<Animale> animali) {
 		if (animali.isEmpty()) throw new IllegalArgumentException();
 		this.animali = animali;
 		this.vincente = selezionaVincente(animali);
 	}
 
-	public Bianco getVincente() {
+	public Animale getVincente() {
 		return this.vincente;
 	}
 	
-	public Set<Bianco> getAnimali() {
+	public Set<Animale> getAnimali() {
 		return this.animali;
 	}
 	
-	private Bianco selezionaVincente(Collection<Bianco> animali) {
+	private Animale selezionaVincente(Collection<Animale> animali) {
 				
-		return Collections.min(animali, new Comparator<Bianco>() {
+		return Collections.min(animali, new Comparator<Animale>() {
 
 			@Override
-			public int compare(Bianco a1, Bianco a2) {
+			public int compare(Animale a1, Animale a2) {
 				int diff1 = getForza(a1);
 				int diff2 = getForza(a1); 
 				int cmp = diff2-diff1;
@@ -53,7 +54,7 @@ public class Scontro {
 			 * @param  a1 - oggetto di cui si calcola la forza
 			 * @return La forza e' un intero non negativo legata all'eta', 0 e' la forza massima
 			 */
-			private int getForza(Bianco a1) {
+			private int getForza(Animale a1) {
 				return Math.abs(a1.getEta() - ETA_OTTIMALE_PER_GLI_SCONTRI);
 			}
 		});

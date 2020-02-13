@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import gen.tipo.Animale;
 import gen.tipo.Bianco;
 
 
@@ -19,7 +20,7 @@ public class Ambiente {
 	
 	final private Set<Coordinate> ostacoli;
 
-	final private List<Bianco> animali;
+	final private List<Animale> animali;
 
 	/**
 	 * Crea un ambiente (quadrato) delle dimensioni prefissate
@@ -77,28 +78,40 @@ public class Ambiente {
 		return possibili;
 	}
 
-	public void add(Bianco a) {
+	public void add(Animale a) {
 		this.animali.add(a);
 	}
 
-	public List<Bianco> getAllAnimali() {
+	public List<Animale> getAllAnimali() {
 		return this.animali;
 	}
+	
+	public List<Animale> getAllStessaSpecie() {
+		List<Animale>bianchi = new ArrayList<Animale>();
+		for(Animale a:this.getAllAnimali()) {
+			if(a.getClass().equals(Bianco.class))
+				bianchi.add(a);
+		}
+		
+		return bianchi;
+	}
+	
+	
 
 	
-	public Set<Bianco> getAnimali(Coordinate posizione) {
-		final Set<Bianco> risultato = new HashSet<>();
-		for(Bianco animale : getAllAnimali())
+	public Set<Animale> getAnimali(Coordinate posizione) {
+		final Set<Animale> risultato = new HashSet<>();
+		for(Animale animale : getAllAnimali())
 			if (animale.getPosizione().equals(posizione))
 				risultato.add(animale);
 		return risultato;
 	}
 
-	public void rimuoviAnimali(Set<Bianco> animali) {
+	public void rimuoviAnimali(Set<Animale> animali) {
 		this.animali.removeAll(animali);
 	}
 
-	public void rimuoviAnimale(Bianco animale) {
+	public void rimuoviAnimale(Animale animale) {
 		this.animali.remove(animale);
 	}
 

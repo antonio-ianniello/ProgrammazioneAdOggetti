@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import gen.sim.Coordinate;
 import gen.sim.Simulatore;
 import gen.sim.Ambiente;
+import gen.tipo.Animale;
 import gen.tipo.Bianco;
 
 public class GUI extends JPanel implements CostantiGUI {
@@ -95,13 +96,13 @@ public class GUI extends JPanel implements CostantiGUI {
 		this.disegnaOstacoli(g,ambiente.getOstacoli());
 		g.setColor(WHITE); // per stampare id
 
-		for (Bianco a : this.simulatore.getAnimali()) {
+		for (Animale a : this.simulatore.getAnimali()) {
 			disegna(g, a);
 		}
 		
 	}
 
-	private void disegna(Graphics g, Bianco a) {
+	private void disegna(Graphics g, Animale a) {
         final Coordinate posizione = a.getPosizione();
 		final String ids = a.toString();
 		disegnaTesto(g, posizione, ids);

@@ -16,6 +16,7 @@ import javax.swing.SwingUtilities;
 
 import gen.gui.GUI;
 import gen.stats.Statistiche;
+import gen.tipo.Animale;
 import gen.tipo.Bianco;
 
 public class Simulatore {
@@ -53,7 +54,7 @@ public class Simulatore {
 	}
 
 
-	public List<Bianco> getAnimali() {
+	public List<Animale> getAnimali() {
 		return this.ambiente.getAllAnimali();
 	}
 
@@ -103,13 +104,13 @@ public class Simulatore {
 	}
 
 	private void eseguiPassoDellaSimulazione() {
-		final List<Bianco> tutti = new ArrayList<>(this.ambiente.getAllAnimali());
+		final List<Animale> tutti = new ArrayList<>(this.ambiente.getAllAnimali());
 		Collections.shuffle(tutti);
 		/* DA CAMBIARE ( VEDI DOMANDA 2 )*/
-		for(Bianco animale : tutti) {
+		for(Animale animale : tutti) {
 			animale.simula(this.getPasso());
 			
-			final Set<Bianco> stessaPosizione = this.getAmbiente().getAnimali(animale.getPosizione());
+			final Set<Animale> stessaPosizione = this.getAmbiente().getAnimali(animale.getPosizione());
 			
 			if (stessaPosizione.size()>1) { /* scontro od incontro? */
 				if (isScontroPossibile(stessaPosizione)) {
@@ -121,7 +122,7 @@ public class Simulatore {
 				} else if (isRiproduzionePossibile(animale,stessaPosizione)) {
 					//  tutti della stessa specie: questo e' un incontro
 					final Incontro incontro = new Incontro(stessaPosizione);
-					final Bianco figlio = incontro.figlio();
+					final Animale figlio = incontro.figlio();
 					this.getAmbiente().add(figlio);
 					this.add(incontro);
 				} 
@@ -132,23 +133,23 @@ public class Simulatore {
 		}
 	}
 	
-	public boolean isScontroPossibile(Set<Bianco> animali) {
+	public boolean isScontroPossibile(Set<Animale> animali) {
 		return getNumeroTipologie(animali)>1 && siVerificaEventoDiProbabilita(PROBABILITA_SCONTRO);	
 	}
 
-	private int getNumeroTipologie(Set<Bianco> animali) {
-		final Set<Class<? extends Bianco>> tipi = new HashSet<>();
-		for(Bianco a : animali)
+	private int getNumeroTipologie(Set<Animale> animali) {
+		final Set<Class<? extends Animale>> tipi = new HashSet<>();
+		for(Animale a : animali)
 			tipi.add(a.getClass());
 		return tipi.size();
 	}
 
 
-	private boolean isRiproduzionePossibile(Bianco animale, Set<Bianco> animali) {
+	private boolean isRiproduzionePossibile(Animale animale, Set<Animale> animali) {
 		if (animali.size()!=2 || getNumeroTipologie(animali)!=1) return false;
-		final Iterator<Bianco> it = animali.iterator();
-		final Bianco a1 = it.next(); // primo 
-		final Bianco a2 = it.next(); // secondo
+		final Iterator<Animale> it = animali.iterator();
+		final Animale a1 = it.next(); // primo 
+		final Animale a2 = it.next(); // secondo
 		if (a1.getGenere()==a2.getGenere()) return false;
 		return ( MIN_ETA_RIPRODUZIONE<=animale.getEta() && animale.getEta()<=MAX_ETA_RIPRODUZIONE && 
 				 siVerificaEventoDiProbabilita(PROBABILITA_RIPRODUZIONE) );
