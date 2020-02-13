@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 import gen.tipo.Animale;
-import gen.tipo.Bianco;
+
 
 
 public class Ambiente {
@@ -94,6 +94,17 @@ public class Ambiente {
 		}
 		
 		return bianchi;
+	}
+	
+	
+	public List<Animale> getAllSpecieDiversa(Class<?> classe) {
+		List<Animale>specieDiversa = new ArrayList<Animale>();
+		for(Animale a:this.getAllAnimali()) {
+			if(!a.getClass().equals(classe))
+				specieDiversa.add(a);
+		}
+		
+		return specieDiversa;
 	}
 	
 	
