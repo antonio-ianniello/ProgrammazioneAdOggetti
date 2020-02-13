@@ -19,6 +19,7 @@ import gen.stats.Statistiche;
 import gen.tipo.Animale;
 import gen.tipo.Bianco;
 import gen.tipo.Giallo;
+import gen.tipo.Verde;
 
 public class Simulatore {
 
@@ -48,6 +49,7 @@ public class Simulatore {
 		for(int i=0; i<NUMERO_INIZIALE_PER_TIPOLOGIA; i++) {
 			this.ambiente.add(creaBianco());
 			this.ambiente.add(creaGiallo());
+			this.ambiente.add(creaVerde());
 		}
 	}
 	
@@ -59,6 +61,9 @@ public class Simulatore {
 		return new Giallo(this.getAmbiente());
 	}
 
+	public Verde creaVerde() {
+		return new Verde(this.getAmbiente());
+	}
 
 	public List<Animale> getAnimali() {
 		return this.ambiente.getAllAnimali();
