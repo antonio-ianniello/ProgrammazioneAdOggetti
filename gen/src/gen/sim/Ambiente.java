@@ -86,10 +86,10 @@ public class Ambiente {
 		return this.animali;
 	}
 	
-	public List<Animale> getAllStessaSpecie() {
+	public List<Animale> getAllStessaSpecie(Class<?> classe) {
 		List<Animale>bianchi = new ArrayList<Animale>();
 		for(Animale a:this.getAllAnimali()) {
-			if(a.getClass().equals(Bianco.class))
+			if(a.getClass().equals(classe))
 				bianchi.add(a);
 		}
 		
